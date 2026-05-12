@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>LLAMAPEY | Ahorra en dólares digitales desde Bolivia</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0057B3, #00A3E0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #0057B3;
+        }
+        .btn-outline {
+            border: 1px solid #0057B3;
+            padding: 8px 20px;
+            border-radius: 40px;
+            background: transparent;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: #0057B310;
+        }
+
+        .hero {
+            padding: 60px 0 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            justify-content: space-between;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #334155;
+            margin-bottom: 28px;
+        }
+        .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .btn-primary {
+            background: #0057B3;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 8px rgba(0,87,179,0.2);
+        }
+        .btn-primary:hover {
+            background: #003d80;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-secondary:hover {
+            border-color: #0057B3;
+            color: #0057B3;
+        }
+        .hero-image {
+            flex: 0.9;
+            text-align: center;
+            background: #eef2ff;
+            border-radius: 48px;
+            padding: 30px 20px;
+        }
+        .hero-image i {
+            font-size: 6rem;
+            color: #0057B3;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 32px 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #b9d9f0;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #0057B3;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .card p {
+            color: #475569;
+        }
+
+        .comparison {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+        .badge-success {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+        }
+        th, td {
+            padding: 14px 8px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .check {
+            color: #15803d;
+        }
+        .times {
+            color: #b91c1c;
+        }
+        .warning {
+            color: #e67e22;
+        }
+
+        .survey-box {
+            background: linear-gradient(135deg, #f1f5f9, #ffffff);
+            border-radius: 36px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #cbd5e1;
+        }
+        .form-group {
+            max-width: 500px;
+            margin: 24px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        input, select, textarea {
+            padding: 14px 18px;
+            border-radius: 60px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            font-size: 1rem;
+            background: white;
+        }
+        textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        /* Panel de admin secreto - SOLO aparece con el hash correcto */
+        .admin-panel {
+            background: #1e293b;
+            color: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 40px;
+            text-align: left;
+            display: none;
+        }
+        .admin-panel h4 {
+            margin-bottom: 12px;
+            color: #00A3E0;
+        }
+        .admin-panel button {
+            background: #0057B3;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .admin-panel pre {
+            background: #0f172a;
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 12px;
+            margin-top: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .navbar {
+                flex-direction: column;
+            }
+            .survey-box {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="container">
+    <div class="navbar">
+        <div class="logo">LLAMAPEY</div>
+        <div class="nav-links">
+            <a href="#beneficios">Beneficios</a>
+            <a href="#ahorro">Ahorro con intereses</a>
+            <a href="#encuesta">Encuesta</a>
+            <a href="#" class="btn-outline" id="openSurveyBtn">Unirme a la lista</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="container hero">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-shield-alt"></i> Tus dólares digitales, solo tuyos</div>
+            <h1>Convierte tus bolivianos en dólares digitales <br>y hazlos crecer con intereses</h1>
+            <p>LLAMAPEY te permite cambiar tus bolivianos por dólares digitales (USDC) de forma fácil, guardarlos con total seguridad (solo tú tienes el control) y generar intereses del <strong>3% al 5% anual en dólares</strong>. Sin necesidad de ser experto en cripto.</p>
+            <div class="cta-group">
+                <button class="btn-primary" id="heroCta">Quiero probar LLAMAPEY 🚀</button>
+                <button class="btn-secondary" onclick="window.location.href='#encuesta'">📊 Ver si esto funciona en Bolivia</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-dollar-sign"></i>
+            <i class="fas fa-chart-line" style="font-size: 3rem; margin-left: 10px;"></i>
+            <p style="margin-top: 16px; font-weight:500;">🔒 Tu dinero, tus llaves</p>
+            <small style="color:#475569;">Convierte Bs → Dólar digital → Gana 3% a 5% anual</small>
+        </div>
+    </div>
+
+    <div class="container section" id="beneficios">
+        <h2 class="section-title">¿Por qué usar LLAMAPEY?</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+                <h3>Convierte Bs → Dólar digital</h3>
+                <p>Olvídate de términos complicados. Cambias tus bolivianos por dólares digitales (USDC) mediante transferencia simple o pago móvil. 1 USDC = 1 dólar.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-key"></i></div>
+                <h3>Solo tú tienes el control</h3>
+                <p>No es como un banco o exchange. Con LLAMAPEY, solo tú accedes a tus dólares digitales. Nadie puede congelarte los fondos.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-piggy-bank"></i></div>
+                <h3>Ahorro con intereses 3% a 5%</h3>
+                <p>Tus dólares digitales generan intereses automáticamente. Gana entre 3% y 5% anual en dólares, muy por encima de cualquier plazo fijo en bolivianos.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-bolivia"></i></div>
+                <h3>Hecho para Bolivia</h3>
+                <p>Pensado con métodos de pago locales (QR, transferencias BCP/BISA, Tigo Money próximamente). Sin barreras de idioma ni plataformas extranjeras.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+                <h3>Mejor que plazo fijo en Bs</h3>
+                <p>Mientras el boliviano pierde poder adquisitivo, tus ahorros en dólares digitales crecen con interés real. Protección contra la devaluación.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <h3>Ya funciona en la región</h3>
+                <p>En Argentina y Chile miles de personas usan este modelo. Bolivia está lista para dar el salto al ahorro digital seguro.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container section" id="ahorro">
+        <h2 class="section-title">Ahorro con intereses: LLAMAPEY vs Banco vs Exchange</h2>
+        <div class="comparison">
+            <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px;">
+                <i class="fas fa-coins" style="font-size: 2rem;"></i>
+                <span class="badge-success">Tú ganas, tú controlas</span>
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Comparación</th><th>LLAMAPEY (autocustodia)</th><th>Banco / Plazo fijo Bolivia</th><th>Exchange (Binance, etc)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>¿Quién controla tu dinero?</td><td class="check">✅ Solo tú</td><td class="times">❌ El banco</td><td class="times">❌ El exchange</td></tr>
+                    <tr><td>Riesgo de congelamiento</td><td class="check">✅ Muy bajo</td><td class="warning">⚠️ Alto (medidas cambiarias)</td><td class="warning">⚠️ Medio</td></tr>
+                    <tr><td><strong>Interés anual en dólares</strong></td><td class="check"><strong>✅ 3% a 5%</strong></td><td class="times">❌ 0.5% a 1.5% en Bs</td><td class="warning">⚠️ 1% a 4%</td></tr>
+                    <tr><td>Convierte Bs a dólar digital</td><td class="check">✅ Sí, simple</td><td class="times">❌ Difícil</td><td class="check">✅ Sí (P2P)</td></tr>
+                    <tr><td>Protección contra devaluación</td><td class="check">✅ Total</td><td class="times">❌ Pierdes valor en Bs</td><td class="check">✅ Sí</td></tr>
+                </tbody>
+            </table>
+            <p><i class="fas fa-lightbulb"></i> <strong>En términos simples:</strong> con LLAMAPEY, cambias tus bolivianos por dólares digitales que te pagan <strong>entre 3% y 5% de interés anual en dólares</strong>, y solo tú puedes moverlos.</p>
+        </div>
+    </div>
+
+    <div class="container section" id="encuesta">
+        <div class="survey-box">
+            <i class="fas fa-poll" style="font-size: 2.5rem; color:#0057B3; margin-bottom: 12px;"></i>
+            <h2 style="font-size: 1.8rem;">¿Usarías LLAMAPEY para ahorrar en dólares digitales?</h2>
+            <p>Ayúdanos a saber si vale la pena lanzar LLAMAPEY en Bolivia.</p>
+            
+            <form id="surveyForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Tu nombre (opcional)" id="name">
+                    <input type="email" placeholder="Tu correo electrónico (para avisarte)" id="email" required>
+                    
+                    <select id="knowCrypto" required>
+                        <option value="" disabled selected>¿Conoces las criptomonedas o dólares digitales?</option>
+                        <option>Sí, uso Binance o exchanges</option>
+                        <option>Sí, pero solo he escuchado</option>
+                        <option>No, pero me interesa ahorrar en dólar digital</option>
+                        <option>No me interesa</option>
+                    </select>
+                    
+                    <label>¿Qué tan probable es que uses LLAMAPEY?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="interest" value="Muy probable" required> Muy probable</label>
+                        <label><input type="radio" name="interest" value="Probable"> Probable</label>
+                        <label><input type="radio" name="interest" value="Poco probable"> Poco probable</label>
+                        <label><input type="radio" name="interest" value="Nada probable"> Nada probable</label>
+                    </div>
+
+                    <textarea rows="2" placeholder="¿Qué te daría más confianza?" id="feedback"></textarea>
+                    
+                    <button type="submit" class="btn-primary" style="background:#003d80; width:100%;">📩 Enviar opinión</button>
+                </div>
+                <p id="surveySuccess" style="color: green; margin-top: 16px; display: none;">✅ ¡Gracias! Guardamos tu respuesta.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- PANEL ADMIN SECRETO - se muestra SOLO con el hash correcto -->
+    <div class="container" id="adminPanelContainer">
+        <div class="admin-panel" id="adminPanel">
+            <h4><i class="fas fa-chart-bar"></i> Panel de Resultados (acceso restringido)</h4>
+            <button id="exportSurveysBtn">📥 Exportar Encuestas a CSV</button>
+            <button id="exportWaitlistBtn">📥 Exportar Correos a CSV</button>
+            <button id="clearDataBtn" style="background:#b91c1c;">🗑️ Borrar todos los datos</button>
+            <div>
+                <p><strong>Resumen rápido:</strong></p>
+                <p id="statsSummary">Cargando...</p>
+            </div>
+            <pre id="rawData">Los datos aparecerán aquí...</pre>
+        </div>
+    </div>
+    
+    <!-- Pie de página para waitlist directa -->
+    <div class="container section" style="text-align: center; padding-top: 0;">
+        <div style="background: #e6f0fa; border-radius: 48px; padding: 32px;">
+            <h3>📢 ¿Quieres ser de los primeros en probar LLAMAPEY?</h3>
+            <p>Déjanos tu correo y te avisaremos.</p>
+            <div style="max-width: 400px; margin: 20px auto; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+                <input type="email" id="waitlistEmail" placeholder="tu@email.com" style="flex:1; min-width: 200px;">
+                <button id="waitlistBtn" class="btn-primary">Apuntarme</button>
+            </div>
+            <p id="waitlistMsg" style="font-size: 0.9rem;"></p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p><i class="fas fa-lock"></i> LLAMAPEY – Convierte Bs → Dólar digital + Ahorro con intereses 3% a 5%</p>
+        <p>Proyecto en validación para Bolivia</p>
+    </div>
+</footer>
+
+<script>
+    // 🔐 CLAVE SECRETA: Cambia esto por lo que quieras, ej: "MiClave2025" o "AdminLLama"
+    const SECRET_HASH = "LlamaPey2025";   // 👈 CAMBIA ESTO por tu contraseña/secreto personal
+    
+    // Verificar si la URL contiene el hash secreto
+    function checkAdminAccess() {
+        const hash = window.location.hash.substring(1); // quita el #
+        if (hash === SECRET_HASH) {
+            document.getElementById('adminPanel').style.display = 'block';
+            updateAdminPanel();
+        } else {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+    }
+    
+    // Actualizar el panel con datos en vivo
+    function updateAdminPanel() {
+        let surveys = JSON.parse(localStorage.getItem('llamapey_surveys') || '[]');
+        let waitlist = JSON.parse(localStorage.getItem('llamapey_waitlist') || '[]');
+        
+        let muyProbable = surveys.filter(s => s.interest === 'Muy probable').length;
+        let probable = surveys.filter(s => s.interest === 'Probable').length;
+        
+        document.getElementById('statsSummary').innerHTML = `
+            📊 <strong>${surveys.length}</strong> respuestas de encuesta<br>
+            ✉️ <strong>${waitlist.length}</strong> correos registrados<br>
+            🔥 Interés alto (Muy probable): ${muyProbable}<br>
+            👍 Interés medio (Probable): ${probable}
+        `;
+        
+        document.getElementById('rawData').innerHTML = JSON.stringify({
+            encuestas: surveys,
+            waitlist: waitlist
+        }, null, 2);
+    }
+    
+    // Guardar encuesta
+    const surveyForm = document.getElementById('surveyForm');
+    const successMsg = document.getElementById('surveySuccess');
+    
+    surveyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value || 'Anónimo';
+        const email = document.getElementById('email').value;
+        const knowCrypto = document.getElementById('knowCrypto').value;
+        const interest = document.querySelector('input[name="interest"]:checked')?.value;
+        const feedback = document.getElementById('feedback').value;
+        
+        if (!knowCrypto || !interest || !email) {
+            alert('Completa todos los campos.');
+            return;
+        }
+        
+        const responseData = { name, email, knowCrypto, interest, feedback, timestamp: new Date().toISOString() };
+        let allSurveys = JSON.parse(localStorage.getItem('llamapey_surveys') || '[]');
+        allSurveys.push(responseData);
+        localStorage.setItem('llamapey_surveys', JSON.stringify(allSurveys));
+        
+        let waitlist = JSON.parse(localStorage.getItem('llamapey_waitlist') || '[]');
+        if (!waitlist.includes(email)) {
+            waitlist.push(email);
+            localStorage.setItem('llamapey_waitlist', JSON.stringify(waitlist));
+        }
+        
+        successMsg.style.display = 'block';
+        surveyForm.reset();
+        setTimeout(() => successMsg.style.display = 'none', 4000);
+        
+        if (window.location.hash.substring(1) === SECRET_HASH) updateAdminPanel();
+    });
+    
+    // Exportar funciones
+    document.getElementById('exportSurveysBtn')?.addEventListener('click', () => {
+        let surveys = JSON.parse(localStorage.getItem('llamapey_surveys') || '[]');
+        let csv = "Nombre,Email,NivelCripto,Interés,Feedback,Fecha\n";
+        surveys.forEach(s => {
+            csv += `"${s.name}","${s.email}","${s.knowCrypto}","${s.interest}","${(s.feedback || '').replace(/"/g, '""')}","${s.timestamp}"\n`;
+        });
+        let blob = new Blob([csv], {type: 'text/csv'});
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `encuestas_llamapey_${new Date().toISOString().slice(0,10)}.csv`;
+        link.click();
+    });
+    
+    document.getElementById('exportWaitlistBtn')?.addEventListener('click', () => {
+        let waitlist = JSON.parse(localStorage.getItem('llamapey_waitlist') || '[]');
+        let csv = "Email,FechaRegistro\n";
+        waitlist.forEach(email => {
+            csv += `"${email}","${new Date().toISOString()}"\n`;
+        });
+        let blob = new Blob([csv], {type: 'text/csv'});
+        let link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `waitlist_llamapey_${new Date().toISOString().slice(0,10)}.csv`;
+        link.click();
+    });
+    
+    document.getElementById('clearDataBtn')?.addEventListener('click', () => {
+        if (confirm('⚠️ ¿Borrar TODOS los datos? No se puede deshacer.')) {
+            localStorage.removeItem('llamapey_surveys');
+            localStorage.removeItem('llamapey_waitlist');
+            alert('Datos borrados');
+            if (window.location.hash.substring(1) === SECRET_HASH) updateAdminPanel();
+        }
+    });
+    
+    // Waitlist desde footer
+    const waitlistBtn = document.getElementById('waitlistBtn');
+    const waitlistEmail = document.getElementById('waitlistEmail');
+    const waitlistMsg = document.getElementById('waitlistMsg');
+    
+    if (waitlistBtn) {
+        waitlistBtn.addEventListener('click', () => {
+            const email = waitlistEmail.value.trim();
+            if (!email || !email.includes('@')) {
+                waitlistMsg.innerText = '❌ Correo inválido';
+                waitlistMsg.style.color = '#b91c1c';
+                return;
+            }
+            let waitlist = JSON.parse(localStorage.getItem('llamapey_waitlist') || '[]');
+            if (!waitlist.includes(email)) {
+                waitlist.push(email);
+                localStorage.setItem('llamapey_waitlist', JSON.stringify(waitlist));
+                waitlistMsg.innerText = '🎉 ¡Te avisaremos!';
+                waitlistMsg.style.color = '#15803d';
+            } else {
+                waitlistMsg.innerText = '✉️ Ya estás registrado';
+                waitlistMsg.style.color = '#0057B3';
+            }
+            waitlistEmail.value = '';
+            setTimeout(() => waitlistMsg.innerText = '', 3000);
+            if (window.location.hash.substring(1) === SECRET_HASH) updateAdminPanel();
+        });
+    }
+    
+    // Scroll a encuesta
+    const heroCta = document.getElementById('heroCta');
+    const openSurveyBtn = document.getElementById('openSurveyBtn');
+    function scrollToSurvey() {
+        document.getElementById('encuesta').scrollIntoView({ behavior: 'smooth' });
+    }
+    if (heroCta) heroCta.addEventListener('click', scrollToSurvey);
+    if (openSurveyBtn) openSurveyBtn.addEventListener('click', scrollToSurvey);
+    
+    // Detectar cambios en hash (por si se escribe la URL manualmente)
+    window.addEventListener('hashchange', checkAdminAccess);
+    checkAdminAccess(); // al cargar la página
+</script>
+</body>
+</html>
